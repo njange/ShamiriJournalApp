@@ -1,17 +1,21 @@
 {
-    "compilerOptions": {
-      "target": "esnext",
-      "module": "commonjs",
-      "strict": true,
-      "esModuleInterop": true,
-      "skipLibCheck": true,
-      "forceConsistentCasingInFileNames": true,
-      "outDir": "./dist",
-      "rootDir": "./src",
-      "experimentalDecorators": true,
-      "emitDecoratorMetadata": true
-    },
-    "exclude": ["node_modules", "dist"]
-  }
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "commonjs",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "outDir": "./backend/dist",
+    "rootDir": "./backend/src",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
+  },
+  "include": [
+    "backend/src/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
 
-  

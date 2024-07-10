@@ -1,30 +1,20 @@
-import express, { Application, Request, Response } from 'express';
+import express from 'express';
 import bodyParser from 'body-parser';
-import sequelize from './config/database';
+import userRoutes from './routes/userRoutes'; // Import your user routes
 
-
-const app: Application = express();
-const port = process.env.PORT || 3000;
-
+const app = express();
+const PORT = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
 
+// Use user routes
+app.use('/api/users', userRoutes);
 
-app.get('/', (req: Request, res: Response) => {
-  res.send('Hello, World!');
+// Default route
+app.use((req, res, next) => {
+  res.status(404).send('Cannot ' + req.method + ' ' + req.url);
 });
 
-sequelize.authenticate()
-  .then(() => {
-    console.log('Connection has been established successfully.');
-  })
-  .catch((error: any) => {
-    console.error('Unable to connect to the database:', error);
-  });
-
-
-
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
-
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
