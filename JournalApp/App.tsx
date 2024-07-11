@@ -14,7 +14,7 @@ const App = () => {
     <Router>
       <Routes>
       <Route path="/login" element={<Login setAuth={setAuth} />} />
-        <Route path="/register" element={<Register setAuth={setAuth} />} />
+        <Route path="/register" element={<Register setAuth={} />} />
         <Route path="/dashboard" element={<Dashboard auth={auth} />} />
         <Route path="/new-entry" element={<NewEntry auth={auth} />} />
         <Route path="/edit-entry/:id" element={<EditEntry auth={auth} />} />
