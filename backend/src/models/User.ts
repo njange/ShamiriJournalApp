@@ -1,5 +1,3 @@
-// backend/src/models/User.ts
-
 import { DataTypes, Model, Optional } from 'sequelize';
 import sequelize from '../sequelize';
 
@@ -7,7 +5,7 @@ interface UserAttributes {
   id: number;
   username: string;
   password: string;
-  email: string;
+  createdAt?: Date;
 }
 
 interface UserCreationAttributes extends Optional<UserAttributes, 'id'> {}
@@ -16,34 +14,33 @@ class User extends Model<UserAttributes, UserCreationAttributes> implements User
   public id!: number;
   public username!: string;
   public password!: string;
-  public email!: string;
+  public readonly createdAt!: Date;
 }
 
 User.init(
   {
     id: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.INTEGER.UNSIGNED,
       autoIncrement: true,
-      primaryKey: true
+      primaryKey: true,
     },
     username: {
-      type: DataTypes.STRING,
+      type: new DataTypes.STRING(255),
       allowNull: false,
-      unique: true
+      unique: true,
     },
     password: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    email: {
-      type: DataTypes.STRING,
+      type: new DataTypes.STRING(255),
       allowNull: false,
-      unique: true
-    }
+    },
+    createdAt: {
+      type: DataTypes.DATE,
+      defaultValue: DataTypes.NOW,
+    },
   },
   {
+    tableName: 'users',
     sequelize,
-    modelName: 'User'
   }
 );
 

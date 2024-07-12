@@ -1,4 +1,3 @@
-// backend/src/config.ts
 
 interface Config {
     database: {
@@ -15,13 +14,13 @@ interface Config {
   const config: Config = {
     database: {
       host: 'localhost',
-      username: 'your_username',
-      password: 'your_password',
+      username: 'shamiri',
+      password: 'shamiri',
       database: 'shamiri', // Adjust database name
       dialect: 'postgres' // Adjust dialect as per your database
     },
-    jwtSecret: 'your_jwt_secret_key', // Secret key for JWT token
-    port: 5000 // Port your server will run on
+    jwtSecret: '1234', // Secret key for JWT token
+    port: 3000 // Port your server will run on
   };
   
   export default config;
